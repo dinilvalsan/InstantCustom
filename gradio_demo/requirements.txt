@@ -3,18 +3,18 @@ torch==2.4.1+cu121
 torchvision==0.19.1+cu121
 torchaudio==2.4.1+cu121
 --extra-index-url https://download.pytorch.org/whl/cu121
-transformers==4.37.1
-accelerate==0.32.0
+transformers
+accelerate
 safetensors
 einops
 onnxruntime-gpu
-spaces==0.19.4
+spaces
 omegaconf
 opencv-python
 insightface
 gradio
 controlnet_aux
 gdown
-pydantic==2.10.6
-peft==0.16.0
-huggingface-hub==0.20.2
+pydantic
+peft
+huggingface-hub
