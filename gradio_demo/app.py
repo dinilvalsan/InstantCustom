@@ -48,13 +48,13 @@ controlnet_path = f'./checkpoints/ControlNetModel'
 # Load pipeline
 controlnet = ControlNetModel.from_pretrained(controlnet_path, torch_dtype=dtype)
 
-def main(pretrained_model_name_or_path="wangqixun/YamerMIX_v8", enable_lcm_arg=False):
+def main(pretrained_model_name_or_path="John6666/big-asp-v2-sdxl", enable_lcm_arg=False):
 
     if pretrained_model_name_or_path.endswith(
             ".ckpt"
         ) or pretrained_model_name_or_path.endswith(".safetensors"):
             scheduler_kwargs = hf_hub_download(
-                repo_id="wangqixun/YamerMIX_v8",
+                repo_id="John6666/big-asp-v2-sdxl",
                 subfolder="scheduler",
                 filename="scheduler_config.json",
             )
@@ -429,23 +429,14 @@ def main(pretrained_model_name_or_path="wangqixun/YamerMIX_v8", enable_lcm_arg=F
             )
         
             enable_LCM.input(fn=toggle_lcm_ui, inputs=[enable_LCM], outputs=[num_steps, guidance_scale], queue=False)
-
-        gr.Examples(
-            examples=get_example(),
-            inputs=[face_file, prompt, style, negative_prompt],
-            run_on_click=True,
-            fn=run_for_examples,
-            outputs=[gallery, usage_tips],
-            cache_examples=True,
-        )
         
         gr.Markdown(article)
 
-    demo.launch()
+    demo.launch(share=True)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--pretrained_model_name_or_path", type=str, default="wangqixun/YamerMIX_v8")
+    parser.add_argument("--pretrained_model_name_or_path", type=str, default="John6666/big-asp-v2-sdxl")
     parser.add_argument("--enable_LCM", type=bool, default=os.environ.get("ENABLE_LCM", False))
 
     args = parser.parse_args()
